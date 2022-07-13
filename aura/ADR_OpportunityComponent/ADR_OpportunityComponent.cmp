@@ -1,0 +1,50 @@
+<aura:component controller= "ADR_DisplayListOfOpportunity" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<aura:attribute name="lstOpportunity" type="List"/> 
+    <aura:attribute name="lstOpportunityByAccount" type="List"/>
+    <aura:attribute name="bandera" type="Boolean" default="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInitBy}"/>
+    <div>
+    	<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+        	<thead>
+            	<tr>
+                    <th scopoe="col"><span class="slds-truncate">Name</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Description</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Stage</span></th>
+            		<th scopoe="col"><span class="slds-truncate">Type</span></th>
+                	<th scopoe="col"><span class="slds-truncate">Account Name</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Account Site</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Account Phone</span></th>
+                </tr>
+            </thead>
+            <tbody>
+            	<aura:iteration items="{!v.lstOpportunity}" var="objOpportunity">
+                	<tr >
+                 	   <td>{!objOpportunity.Name}</td>
+                	    <td>{!objOpportunity.Description}</td>
+                    	<td>{!objOpportunity.Stage}</td>
+                        <td>{!objOpportunity.Type}</td>
+                        <td>{!objOpportunity.Account.Name}</td>
+                        <td>{!objOpportunity.Account.Site}</td>
+                        <td>{!objOpportunity.Account.Phone}</td>
+                    </tr>
+                
+                </aura:iteration>
+                <aura:iteration items="{!v.lstOpportunityByAccount}" var="objOpportunity">
+                	<tr >
+                 	   <td>{!objOpportunity.Name}</td>
+                	    <td>{!objOpportunity.Description}</td>
+                    	<td>{!objOpportunity.Stage}</td>
+                        <td>{!objOpportunity.Type}</td>
+                        <td>{!objOpportunity.Account.Name}</td>
+                        <td>{!objOpportunity.Account.Site}</td>
+                        <td>{!objOpportunity.Account.Phone}</td>
+                    </tr>
+                
+                </aura:iteration>
+            </tbody>
+        
+    	</table>
+    
+    </div>
+</aura:component>

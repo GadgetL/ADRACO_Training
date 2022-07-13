@@ -1,0 +1,49 @@
+<aura:component controller="ADR_CreateAndDisplayContactInformation" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:attribute name="objContact" type="Contact" default="{'objectType': 'Contact',
+                                                             'FirstName': '',
+                                                             'LastName':'',
+                                                             'Phone':'',
+                                                             'Email':''}"></aura:attribute>	
+	<aura:attribute name='lstContact' type= "Contact[]"></aura:attribute>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:card title="Create a new Contact">
+        <lightning:input name="cFirstName" label="Contact First Name" value="{!v.objContact.FirstName}"/>
+        <lightning:input name="cLastName" label="Contact Last Name" value="{!v.objContact.LastName}"/>
+        <lightning:input name="cPhone" label="Phone" value="{!v.objContact.Phone}"/>
+        <lightning:input name="cEmail" label="Email" value="{!v.objContact.Email}"/>
+       <lightning:button variant="brand" label="Create Contact" onclick="{!c.CreateNewContact}"/>
+    </lightning:card>
+	<lightning:card title="Contacts">
+    	<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+        <thead>
+            
+            	<tr>
+                    <th scopoe="col"><span class="slds-truncate">First Name</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Last Name</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Phone</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Email</span></th>
+            		
+
+                </tr>
+            </thead>
+            <tbody>
+            	<aura:iteration items="{!v.lstContact}" var="objContact">
+                	<tr >
+                 	   <td>{!objContact.FirstName}</td>
+                        <td>{!objContact.LastName}</td>
+                	    <td>{!objContact.Phone}</td>
+                    	<td>{!objContact.Email}</td>
+                        
+                    </tr>
+                
+                </aura:iteration>
+        </tbody>
+        </table>
+       
+    </lightning:card>
+    
+    
+    
+		
+
+</aura:component>

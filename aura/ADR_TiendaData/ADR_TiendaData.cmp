@@ -1,0 +1,30 @@
+<aura:component controller= "ADR_DisplayListOfTienda"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="lstTiendas" type="List"/>   
+    <aura:attribute name="bandera" type="Boolean" default="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+        <div>
+    	<table class="slds-table slds-table--bordered slds-table--striped">
+        	<thead>
+            	<tr>
+                    <th scopoe="col"><span class="slds-truncate">Name</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Type</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Account</span></th>
+            		<th scopoe="col"><span class="slds-truncate">Fecha de Inaguración</span></th>
+                </tr>
+            </thead>
+            <tbody>
+            	<aura:iteration items="{!v.lstTiendas}" var="objTienda">
+                	<tr>
+                 	   <td>{!objTienda.Name}</td>
+                	    <td>{!objTienda.ADR_Type__c}</td>
+                    	<td>{!objTienda.ADR_Account__c}</td>
+                        <td>{!objTienda.ADR_Fecha_Inaguracion__c}</td>
+                    </tr>
+                
+                </aura:iteration>
+            </tbody>
+        
+    	</table>
+    
+    </div>
+</aura:component>

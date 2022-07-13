@@ -1,0 +1,5 @@
+({
+	AccounthelperMethod : function() {
+		
+	}
+})

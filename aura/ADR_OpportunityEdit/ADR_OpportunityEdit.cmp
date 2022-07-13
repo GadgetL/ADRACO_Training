@@ -1,0 +1,21 @@
+<aura:component controller="ADR_OpportunityEdit" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<aura:attribute name="data" type="Object"></aura:attribute>
+    <aura:attribute name="columns" type="List"></aura:attribute>
+    <aura:attribute name="draftValues" type="Object" default="[]"></aura:attribute>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+    <aura:handler event="force:refreshView" action="{!c.doInit}"></aura:handler>
+    <div class="slds-p-around_medium">
+    	<h2> Edit Opportunity Records</h2>
+    
+    </div>
+        <div style="height: 300px;">
+        <lightning:datatable
+                aura:Id="dtTable"
+                keyField="Id"
+                data="{!v.data}"
+                columns="{!v.columns}"
+                draftValues="{!v.draftValues}"
+                onsave="{!c.handlesave}"             >
+        </lightning:datatable>
+    </div>
+</aura:component>

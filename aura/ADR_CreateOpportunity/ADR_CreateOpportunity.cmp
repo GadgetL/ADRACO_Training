@@ -1,0 +1,53 @@
+<aura:component controller="ADR_OpportunityInsertAndDisplay" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<aura:attribute name="objOpportunity" type="Opportunity" default="{'sobjectType': 'Opportunity',
+                                                             'Name': '',
+                                                             'Description':'',
+                                                             'Type':'',
+                                                             'CloseDate':'',
+                                                             'StageName':''}"></aura:attribute>	
+	<aura:attribute name='lstOpportunity' type= "Opportunity[]"></aura:attribute>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:card title="Create a new Opportunity">
+        <lightning:input name="oppName" label="Opportunity Name" value="{!v.objOpportunity.Name}"/>
+        <lightning:input name="oppDescription" label="Description" value="{!v.objOpportunity.Description}"/>
+        <label>Type</label>
+            <force:inputField value="{!v.objOpportunity.Type}"/>
+        <lightning:input name="oppCloseDate" type="date" label="Close Date" value="{!v.objOpportunity.CloseDate}"/>
+        <label>Stage Name</label>
+            <force:inputField value="{!v.objOpportunity.StageName}"/>
+        <lightning:button variant="brand" label="Create Opportunity" onclick="{!c.CreateNewOpportunity}"/>
+    </lightning:card>
+	<lightning:card title="Opportunities">
+    	<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+        <thead>
+            
+            	<tr>
+                    <th scopoe="col"><span class="slds-truncate">Name</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Description</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Type</span></th>
+            		<th scopoe="col"><span class="slds-truncate">CloseDate</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Stage</span></th>
+
+                </tr>
+            </thead>
+            <tbody>
+            	<aura:iteration items="{!v.lstOpportunity}" var="objOpportunity">
+                	<tr >
+                 	   <td>{!objOpportunity.Name}</td>
+                	    <td>{!objOpportunity.Description}</td>
+                    	<td>{!objOpportunity.Type}</td>
+                        <td>{!objOpportunity.CloseDate}</td>
+                        <td>{!objOpportunity.Stage}</td>
+                    </tr>
+                
+                </aura:iteration>
+        </tbody>
+        </table>
+       
+    </lightning:card>
+    
+    
+    
+		
+
+</aura:component>
