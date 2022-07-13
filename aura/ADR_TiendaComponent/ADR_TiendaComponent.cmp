@@ -1,0 +1,28 @@
+<aura:component controller="ADR_TiendaComp" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >	    
+    <aura:attribute name="lstTiendas" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="container">
+        <div class="table-container">
+                <table class="slds-box slds-table slds-table-c slds-table_bordered slds-table_col-bordered">
+                <thead class="bg-thead slds-line-height_reset">
+                    <tr class="slds-line-height_reset">
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Id</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Name</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Type</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Inaguración</span></th>                        
+                    </tr>
+                </thead>    
+                <tbody>
+                    <aura:iteration items="{!v.lstTiendas}" var="objTienda">
+                        <tr>
+                            <td>{!objTienda.Id}</td>
+                            <td>{!objTienda.Name}</td>
+                            <td>{!objTienda.ADR_Type__c}</td>
+                            <td>{!objTienda.ADR_Fecha_Inaguracion__c}</td>                            
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>        
+        </div>
+    </div>
+</aura:component>

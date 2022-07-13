@@ -1,0 +1,42 @@
+<aura:component controller="ADR_AccountInsertAndDisplay" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="objAccount" type="Account" default="{'sobjectType' : 'Account', 'Name': '', 'AccountNumber' : '', 'Phone' : '', 'Website' : ''}"/>    
+    <aura:attribute name="lstAccounts" type="Account[]"/>  
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="container-card-acc">
+        <lightning:card title="Create a New Account" class="card-account">
+        <lightning:input name="accName" label="Account Name" value="{!v.objAccount.Name}"/>      
+        <lightning:input name="accAccountNumber" label="Account Number" value="{!v.objAccount.AccountNumber}"/>      
+        <lightning:input name="accPhone" label="Account Phone" value="{!v.objAccount.Phone}"/>      
+        <lightning:input name="accWebsite" label="Account Website" value="{!v.objAccount.Website}"/>              
+        <lightning:button variant="Success" 
+                   label="Create Account" 
+                   onclick="{!c.createNewAccount}" 
+                   class="slds-m-left_x-small">
+		</lightning:button>
+    </lightning:card>
+    </div>        
+    <lightning:card title ="Accounts"> 
+        <div class="table-container">
+            <table class="slds-box slds-table slds-table-c slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"> 
+                <thead class="bg-thead slds-line-height_reset"> 
+                    <tr class="slds-line-height_reset"> 
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Name</span></th> 
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Phone</span></th> 
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Website</span></th> 
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">AccountNumber</span></th> 
+                    </tr> 
+                </thead> 
+                <tbody> 
+                    <aura:iteration items="{!v.lstAccounts}" var="objAccount"> 
+                        <tr> 
+                            <td>{!objAccount.Name}</td> 
+                            <td>{!objAccount.Phone}</td> 
+                            <td>{!objAccount.Website}</td> 
+                            <td>{!objAccount.AccountNumber}</td> 
+                        </tr> 
+                    </aura:iteration> 
+                </tbody> 
+            </table> 
+        </div>        
+    </lightning:card> 
+</aura:component>
