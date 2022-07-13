@@ -1,0 +1,39 @@
+<aura:component controller = "ADR_CreateAndDisplayContactInformation" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<aura:attribute name="objContact" type="Contact" default="{'sobjectType' : 'Contact',
+                                                              'Name':'',
+                                                              'ContactNumber':'',
+                                                              'Phone':'',
+                                                              'Website':''}"/>
+    <aura:attribute name="lstContact" type="Contact[]"/>
+    <aura:handler name="init" value = "{!this}" action = "{!c.doInit}"/>
+    <lightning:card title ="Create a new Contact">
+	  <lightning:input name="accName" label="Contact name" value="{!v.objContact.Name}"/>
+	  <lightning:input name="accContacttNumber" label="Contact Number" value="{!v.objContact.AccountNumber}"/>
+          <lightning:input name="accPhone" label="Phone" value="{!v.objContact.Phone}"/>
+     <lightning:input name="accWebsite" label="Website" value="{!v.objContact.Website}"/>
+        <lightning:button variant="brand" label="Create Contact" onclick="{!c.createAccount}"/>
+    </lightning:card>
+    
+    <lightning:card title ="Contacts">
+         <table class="slds-table slds-table--bordered slds-table--striped">
+         	<thead>
+                <tr >
+                     <th scope="col" ><span class="slds-truncate">Name</span></th>
+                    <th scope="col" ><span class="slds-truncate">Phone</span></th>
+                    <th scope="col" ><span class="slds-truncate">Website</span></th>
+                    <th scope="col" ><span class="slds-truncate">AccountNumber</span></th>
+                </tr>
+             </thead>
+             <tbody>
+             	<aura:iteration items="{!v.lstContact}" var="objAccount">
+                <tr>
+                    <td>{!objAccount.Name}</td>
+                    <td>{!objAccount.Phone}</td>
+                    <td>{!objAccount.Website}</td>
+                    <td>{!objAccount.AccountNumber}</td>
+                </tr>
+                </aura:iteration>
+             </tbody>
+         </table>
+    </lightning:card>
+</aura:component>

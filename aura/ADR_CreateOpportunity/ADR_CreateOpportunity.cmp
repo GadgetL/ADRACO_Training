@@ -1,0 +1,43 @@
+<aura:component controller = "ADR_OpportunityInsertAndDisplay" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<aura:attribute name="objOpportunity" type="Opportunity" default="{'sobjectType' : 'Opportunity',
+                                                              'Name':'',
+                                                              'StageName':'',        
+                                                              'Type':'',
+                                                              'Amount':'',
+                                                              'CloseDate':''}"/>
+    <aura:attribute name="lstOpportunity" type="Opportunity[]"/>
+    <aura:handler name="init" value = "{!this}" action = "{!c.doInit}"/>
+    <lightning:card title ="Create a new Opportunity">
+	  <lightning:input name="accName" label="Name" value="{!v.objOpportunity.Name}"/>
+	  <lightning:input name="accStageName" label="StageName" value="{!v.objOpportunity.StageName}"/>
+        <lightning:input name="accType" label="Type" value="{!v.objOpportunity.Type}"/>
+          <lightning:input name="accAmount" label="Amount" value="{!v.objOpportunity.Amount}"/>
+     <lightning:input name="accMainCompetitors" label="CloseDate" value="{!v.objOpportunity.CloseDate}"/>
+        <lightning:button variant="brand" label="Create Opportunity" onclick="{!c.createOpportunity}"/>
+    </lightning:card>
+    
+    <lightning:card title ="Opportunitys">
+         <table class="slds-table slds-table--bordered slds-table--striped">
+         	<thead>
+                <tr >
+                     <th scope="col" ><span class="slds-truncate">Name</span></th>
+                    <th scope="col" ><span class="slds-truncate">StageName</span></th>
+                    <th scope="col" ><span class="slds-truncate">Type</span></th>
+                    <th scope="col" ><span class="slds-truncate">Amount</span></th>
+                    <th scope="col" ><span class="slds-truncate">CloseDate</span></th>
+                </tr>
+             </thead>
+             <tbody>
+             	<aura:iteration items="{!v.lstOpportunity}" var="objOpportunity">
+                <tr>
+                    <td>{!objOpportunity.Name}</td>
+                    <td>{!objOpportunity.StageName}</td>
+                    <td>{!objOpportunity.Type}</td>
+                    <td>{!objOpportunity.Amount}</td>
+                    <td>{!objOpportunity.CloseDate}</td>
+                </tr>
+                </aura:iteration>
+             </tbody>
+         </table>
+    </lightning:card>
+</aura:component>

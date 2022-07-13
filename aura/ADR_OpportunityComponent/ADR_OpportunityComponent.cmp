@@ -1,0 +1,58 @@
+<aura:component controller = "ADR_DisplayListOfOpportunity" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	 <!--- Declaracion de variables {!v.nombrevariable}-->
+    <aura:attribute name="lstContacts" type="List"/>
+    <aura:attribute name="lstContacts2" type="List"/>
+    <aura:attribute name="bandera" type="Boolean" default="true"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div>
+        <table calss="slds-table slds-table--bordered slds-table--striped">
+            <thead>
+            <tr>
+             
+                    <th scope="col"><span class="slds-truncate">Name</span></th>
+                    <th scope="col"><span class="slds-truncate">Description</span></th>
+                    <th scope="col"><span class="slds-truncate">StageName</span></th>
+                    <th scope="col"><span class="slds-truncate">Type</span></th>
+                	<th scope="col"><span class="slds-truncate">Account Name</span></th>
+               		 <th scope="col"><span class="slds-truncate">Account Site</span></th>
+                	 <th scope="col"><span class="slds-truncate">Account Phone</span></th>
+            
+                	
+            
+                </tr>
+            </thead>
+            <tbody>
+            	<aura:iteration items="{!v.lstContacts}" var="objContact">
+                    <tr>
+                    <td>{!objContact.Name}</td>
+                       <td>{!objContact.Description}</td> 
+                    <td>{!objContact.StageName}</td>
+                    <td>{!objContact.Type}</td>
+                    
+                        <td>{!objContact.Account.Name}</td> 
+                        <td>{!objContact.Account.Site}</td> 
+                          <td>{!objContact.Account.Phone}</td> 
+                    
+                    </tr>
+                
+                </aura:iteration>
+                <aura:iteration items="{!v.lstContacts2}" var="objContact">
+                    <tr>
+                    <td>{!objContact.Name}</td>
+                       <td>{!objContact.Description}</td> 
+                    <td>{!objContact.StageName}</td>
+                    <td>{!objContact.Type}</td>
+                    
+                        <td>{!objContact.Account.Name}</td> 
+                        <td>{!objContact.Account.Site}</td> 
+                          <td>{!objContact.Account.Phone}</td> 
+                    
+                    </tr>
+                
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

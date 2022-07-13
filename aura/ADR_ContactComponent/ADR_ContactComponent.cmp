@@ -1,0 +1,39 @@
+<aura:component controller = "ADR_DisplayListOfContact" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	
+    <!--- Declaracion de variables {!v.nombrevariable}-->
+    <aura:attribute name="lstContacts" type="List"/>
+    <aura:attribute name="bandera" type="Boolean" default="true"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div>
+        <table calss="slds-table slds-table--bordered slds-table--striped">
+            <thead>
+            <tr>
+             
+                    <th scope="col"><span class="slds-truncate">Name</span></th>
+                    <th scope="col"><span class="slds-truncate">LastName</span></th>
+                    <th scope="col"><span class="slds-truncate">Phone</span></th>
+                    <th scope="col"><span class="slds-truncate">Email</span></th>
+                	<th scope="col"><span class="slds-truncate">Department</span></th>
+            
+                	
+            
+                </tr>
+            </thead>
+            <tbody>
+            	<aura:iteration items="{!v.lstContacts}" var="objContact">
+                    <tr>
+                    <td>{!objContact.Name}</td>
+                       <td>{!objContact.LastName}</td> 
+                    <td>{!objContact.Phone}</td>
+                    <td>{!objContact.Email}</td>
+                    <td>{!objContact.Department}</td> 
+                    
+                    </tr>
+                
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>
