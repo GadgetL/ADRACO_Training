@@ -1,0 +1,62 @@
+<aura:component controller= "ADR_DisplayListOfAccount"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="lstAccounts" type="List"/>
+	<aura:attribute name="lstContacts" type="List"/>    
+    <aura:attribute name="bandera" type="Boolean" default="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInitC}"/>
+    <p> Hola mundo </p>
+    <div>
+    	<table class="slds-table slds-table--bordered slds-table--striped">
+        	<thead>
+            	<tr>
+                    <th scopoe="col"><span class="slds-truncate">Name</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Email</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Phone</span></th>
+            		<th scopoe="col"><span class="slds-truncate">Department</span></th>
+                	<th scopoe="col"><span class="slds-truncate">Description</span></th>
+                </tr>
+            </thead>
+            <tbody>
+            	<aura:iteration items="{!v.lstContacts}" var="objContact">
+                	<tr >
+                 	   <td>{!objContact.Name}</td>
+                	    <td>{!objContact.Email}</td>
+                    	<td>{!objContact.Phone}</td>
+                        <td>{!objContact.Department}</td>
+                        <td>{!objContact.Description}</td>
+                    </tr>
+                
+                </aura:iteration>
+            </tbody>
+        
+    	</table>
+    
+    </div>
+        <div>
+    	<table class="slds-table slds-table--bordered slds-table--striped">
+        	<thead>
+            	<tr>
+                    <th scopoe="col"><span class="slds-truncate">Name</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Rating</span></th>
+                    <th scopoe="col"><span class="slds-truncate">Phone</span></th>
+            		<th scopoe="col"><span class="slds-truncate">WebSite</span></th>
+                	<th scopoe="col"><span class="slds-truncate">Description</span></th>
+                </tr>
+            </thead>
+            <tbody>
+            	<aura:iteration items="{!v.lstAccounts}" var="objAccount">
+                	<tr>
+                 	   <td>{!objAccount.Name}</td>
+                	    <td>{!objAccount.Rating}</td>
+                    	<td>{!objAccount.Phone}</td>
+                        <td>{!objAccount.Website}</td>
+                        <td>{!objAccount.Description}</td>
+                    </tr>
+                
+                </aura:iteration>
+            </tbody>
+        
+    	</table>
+    
+    </div>
+</aura:component>
