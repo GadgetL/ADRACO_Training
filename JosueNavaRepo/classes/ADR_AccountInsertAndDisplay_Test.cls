@@ -1,3 +1,8 @@
+/**
+Clase Test para insertar y mostrar una cuenta, utiliza metodos de
+la clase testDataFactory
+ */
+
 @isTest(SeeAllData=false)
 //(SeeAllData=false) esta etiqueta es mala practica tenerla en true, por defecto es false
 public class ADR_AccountInsertAndDisplay_Test {

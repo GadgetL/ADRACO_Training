@@ -1,3 +1,6 @@
+/*
+metodo que retorna una lista de cuentas y metodo para actualizar una cuenta
+ */
 public class ADR_AccountEdit {
 	@AuraEnabled
     public static List<Account> getLstAccount(){

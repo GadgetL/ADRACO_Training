@@ -1,3 +1,7 @@
+/**
+Metodo para crear e insertar una cuenta
+Metodo para listar una lista de cuentas
+ */
 public class ADR_AccountInsertAndDisplay {
 	
     @AuraEnabled

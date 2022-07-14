@@ -1,3 +1,9 @@
+/**
+Clase test de Account, utiliza metodos de testDataFactory,
+aqui valida el objeto por medio de setup, retorna lista de accounts
+y se actualiza account
+ */
+
 @isTest(SeeAllData=false)
 public class ADR_AccountEdit_Test {
  		@testSetup static void setup(){
