@@ -1,0 +1,62 @@
+.THIS {
+    
+}
+.THIS input{
+    
+    border:none;
+    border-bottom:3px solid blue;
+    
+}
+.THIS .createContact{
+    background-image: linear-gradient(to bottom right, black, gray,lightgray);
+    background-color:black;
+}
+.THIS input:focus{
+    border:3px solid lightblue;
+}
+
+
+.THIS label{
+    color: black;
+    
+}
+
+.THIS button{
+    width: 100%;
+}
+
+.THIS h1{
+    text-align: center;
+    font-size:35px;
+    
+}
+.THIS th{
+    color:#fff;
+    background-color:#002db3;
+    text-align: center;
+    fill:#fff;
+    
+}
+
+
+.THIS td{
+    text-align: center;
+}
+
+.THIS td:hover{
+    
+    text-decoration:underline;
+    color: #0750fa;
+}
+
+.THIS tr:nth-child(even) {
+    background-color:#0040ff;
+    color:#fff;
+    
+}
+
+.THIS table{
+    width:100%;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}

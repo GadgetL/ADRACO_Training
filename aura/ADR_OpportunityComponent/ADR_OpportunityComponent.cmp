@@ -1,0 +1,75 @@
+<aura:component controller="ADR_DisplayListOfOpportunities" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name ="lstOpportunity" type="List" />
+    <aura:attribute name ="lstOpportunities" type="List" />
+    <aura:handler name ="init" value="{!this}" action="{!c.doInit}"/>
+    <br/>
+     
+    <div>
+        <h1>Opportunity List</h1>
+    </div>
+    <br/>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th> Opportunity Name </th>
+                    <th> Description </th>
+                    <th> Stage </th>
+                    <th> Account Name</th>
+                    <th> Web Site</th>
+                    <th> Phone</th>
+                    <th> Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.lstOpportunity}" var="objOpportunity">
+                    <tr>
+                    	<td>{!objOpportunity.Name}</td>
+                        <td>{!objOpportunity.Description}</td>
+                        <td>{!objOpportunity.StageName}</td>
+                        <td>{!objOpportunity.Account.Name}</td>
+                        <td>{!objOpportunity.Account.Website}</td>
+                        <td>{!objOpportunity.Account.Phone}</td>
+                        <td>{!objOpportunity.Account.Type}</td>	
+                    </tr>
+                    
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    <div>
+        <h1>Opportunity List by United Oil and Gas Corp.</h1>
+    </div>
+    <br/>
+    <div>
+         <table>
+            <thead>
+                <tr>
+                    <th> Opportunity Name </th>
+                    <th> Description </th>
+                    <th> Stage </th>
+                    <th> Account Name</th>
+                    <th> Web Site</th>
+                    <th> Phone</th>
+                    <th> Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.lstOpportunities}" var="objOpportunities">
+                    <tr>
+                    	<td>{!objOpportunities.Name}</td>
+                        <td>{!objOpportunities.Description}</td>
+                        <td>{!objOpportunities.StageName}</td>
+                        <td>{!objOpportunities.Account.Name}</td>
+                        <td>{!objOpportunities.Account.Website}</td>
+                        <td>{!objOpportunities.Account.Phone}</td>
+                        <td>{!objOpportunities.Account.Type}</td>	
+                    </tr>
+                    
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+    
+</aura:component>
