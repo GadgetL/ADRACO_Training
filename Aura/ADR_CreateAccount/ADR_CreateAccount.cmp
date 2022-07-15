@@ -1,0 +1,67 @@
+<!--************************************************************************************************************
+ * Name: ADR_CreateAccount
+ * Class test: None
+ * Autor: Francisco Reyes
+ * Description: Aura Component for create an Account record, affert display a List of Account updated with fields five.
+ * ***********************************************************************************************************
+ LastModifiedBy      | LastModifiedDate      | Modification Id   | Change description
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ Francisco Reyes		| 23-06-2022			| v0.1				| Example for create a standard object
+*/-->
+<aura:component controller = "ADR_AccountInsertAndDisplay" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<aura:attribute name="objAccount" type="Account" default="{'sobjectType': 'Account', 
+                                                              'Name': '',
+                                                              'AccountNumber': '',
+                                                              'Phone': '',
+                                                              'Website': ''}"/>
+    <aura:attribute name="lstAccounts" type="Account[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:card title="Create new Account" class="slds-has-dividers_bottom-space slds-p-horizontal_small">
+        <lightning:input name="accName " value="{!v.objAccount.Name}" label="Account Name"/>
+        <lightning:input name="accNumber " value="{!v.objAccount.AccountNumber}" label="Account Number"/>
+        <lightning:input name="accPhone " value="{!v.objAccount.Phone}" label="Phone"/>
+        <lightning:input name="accWebsite " value="{!v.objAccount.Website}" label="Website"/>
+        <th class="slds-p-vertical_small">
+            <lightning:button variant="brand" label="Create Account" onclick="{!c.createAccount}" class="slds-m-left_x-small"/>
+        </th>
+    </lightning:card>
+    
+     <thead class="slds-align_absolute-center" style=" height: 50px">
+        <lightning:icon iconName="standard:account" alternativeText="account" title="Account"/>
+        <tt style=" font-size: 30px; padding:10px">ACCOUNT LIST</tt>
+    </thead>
+    <lightning:card  title="Accounts insert">
+        <table class="slds-table slds-table--bordered slds-table--striped">
+            <thead class="slds-text-heading_medium" style="height: 40px; width:20px font-size: 10px;">
+                <tr>
+                    <th scope="col" style="color: darkred; border-width: 5px;border-style: inset; text-align: center; border-color: rgb(238, 228, 171);background-color:rgb(185, 248, 211);">
+                        <lightning:icon iconName="utility:user" alternativeText="User"  title="User" size="small"/>
+                        <span class="slds-truncate" style="padding:10px">Name</span>
+                    </th>
+                    <th scope="col" style="color: rgb(151, 114, 251); border-width: 5px;border-style: inset; text-align: center; border-color:rgb(243, 36, 36);background-color: #CDF0EA;">
+                        <lightning:icon iconName="utility:number_input" alternativeText="Number"  title="Number" size="small"/>
+                        <span class="slds-truncate" style="padding:10px">Account Number</span>
+                    </th>
+                    <th scope="col" style="color: #D61C4E; border-width: 5px;border-style: inset; text-align: center; border-color:rgb(64, 223, 239);background-color: rgb(104, 167, 173);">
+                        <lightning:icon iconName="standard:voice_call" alternativeText="Phone"  title="Phone" size="small"/>
+                        <span class="slds-truncate" style="padding:10px">Phone</span>
+                    </th>
+                    <th scope="col" style="color: rgb(142, 50, 0); border-width: 5px;border-style: inset; text-align: center; border-color:rgb(166, 75, 42);background-color: rgb(255, 235, 193);">
+                        <lightning:icon iconName="standard:link" alternativeText="Website"  title="Website" size="small"/>
+                        <span class="slds-truncate" style="padding:10px">Website</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.lstAccounts}" var="objAccount">
+                    <tr>
+                        <td style="border-width: 2px;border-style: none none groove; text-align: center; border-color: rgb(238, 228, 171);">{!objAccount.Name}</td>
+                        <td style="border-width: 2px;border-style: none none groove; text-align: center; border-color: rgb(243, 36, 36);">{!objAccount.AccountNumber}</td>
+                        <td style="border-width: 2px;border-style: none none groove; text-align: center; border-color: rgb(64, 223, 239);">{!objAccount.Phone}</td>
+                        <td style="border-width: 2px;border-style: none none groove; text-align: center; border-color: rgb(166, 75, 42);">{!objAccount.Website}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,44 @@
+<!--************************************************************************************************************
+ * Name: ADR_AccountComponet
+ * Class test: None
+ * Autor: Francisco Reyes
+ * Description: Aura Component that display a List of Account with fields five.
+ * ***********************************************************************************************************
+ LastModifiedBy      | LastModifiedDate      | Modification Id   | Change description
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ Francisco Reyes		| 23-06-2022			| v0.1				| Example for display a standard object
+*/-->
+<!--Para traer la clase de apex se usa un controller-->
+<aura:component controller = "ADR_DisplayListOfAccount" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	
+    <!-- Declaracion de variables para acceder a las variables {!v.name}-->
+    <aura:attribute name="lstAccounts" type="List"/>
+    <aura:attribute name="bandera" type="Boolean" default="true"/>
+    <!--metodos       c.name ve a controller y trae la funcion name-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <p>Hola mundo</p>
+    <div>
+        <table class="slds-table slds-table--bordered slds-table--striped">
+            <thead>
+                <tr>
+                    <th scope="col"><span class="slds-truncate">Name</span></th>
+                    <th scope="col"><span class="slds-truncate">Rating</span></th>
+                    <th scope="col"><span class="slds-truncate">Phone</span></th>
+                    <th scope="col"><span class="slds-truncate">Website</span></th>
+                    <th scope="col"><span class="slds-truncate">Description</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.lstAccounts}" var="objAccount"><!--ciclo para recorrer la lista que se trae de la clase apex-->
+                    <tr>
+                        <td>{!objAccount.Name}</td>
+                        <td>{!objAccount.Rating}</td>
+                        <td>{!objAccount.Phone}</td>
+                        <td>{!objAccount.Website}</td>
+                        <td>{!objAccount.Description}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

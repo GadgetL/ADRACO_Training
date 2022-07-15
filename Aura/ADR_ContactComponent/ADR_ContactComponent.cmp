@@ -1,0 +1,56 @@
+<!--************************************************************************************************************
+ * Name: ADR_ContactComponet
+ * Class test: None
+ * Autor: Francisco Reyes
+ * Description: Aura Component that display a List of Contact with fields five.
+ * ***********************************************************************************************************
+ LastModifiedBy      | LastModifiedDate      | Modification Id   | Change description
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ Francisco Reyes		| 23-06-2022			| v0.1				| Example for display a standard object
+*/-->
+<aura:component controller="ADR_DisplayListofContact" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<aura:attribute name="lstContacts" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <thead style=" height: 90px">
+        <lightning:icon iconName="standard:contact" alternativeText="contact" title="contact" size="large"/>
+        <tt style=" font-size: 50px; margin:50px 0px 0px 20px ">CONTACT LIST</tt>
+    </thead>
+    <div>
+        <table class="slds-table slds-table--bordered slds-table--striped">
+            <thead class="slds-text-heading_medium" style="height: 60px; width:40px font-size: 20px;">
+                <tr>
+                    <th scope="col" style="color: darkred; border-width: 5px;border-style: inset none inset inset; text-align: center; border-color: rgb(204, 0, 51);background-color: rgb(51, 255, 255);" >
+                        <lightning:icon iconName="utility:user" alternativeText="User"  title="User" style="color:darkred;"/>
+                        <span class="slds-truncate" style="padding:10px">FirstName</span>
+                    </th>
+                    <th scope="col" style="color: darkblue; border-width: 5px;border-style: inset inset inset none; text-align: left; border-color: darkblue; background-color: rgb(0, 204, 255);">
+                        <span class="slds-truncate">LastName</span>
+                    </th>
+                    <th scope="col" style="color: darkgreen; border-width: 5px;border-style: inset; text-align: center; border-color: darkgreen;background-color:orange;">
+                        <lightning:icon iconName="standard:account" alternativeText="Account" title="Account variant"/>
+                        <span class="slds-truncate" style="padding:10px">Id Account</span>
+                    </th>
+                    <th scope="col" style="color: purple; border-width: 5px;border-style: inset; text-align: center; border-color: purple;background-color: rgb(102, 204, 102);">
+                        <lightning:icon iconName="utility:email" alternativeText="Email"  title="Email variant"/>
+                        <span class="slds-truncate" style="padding:10px">Email</span>
+                    </th>
+                    <th scope="col" style="color: orange; border-width: 5px;border-style: inset; text-align: center; border-color: orange;background-color: rgb(51, 51, 255);">
+                        <lightning:icon iconName="custom:custom107" alternativeText="custom107"  title="custom107 variant"/>
+                        <span class="slds-truncate" style="padding:10px">Departamento tipo</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.lstContacts}" var="objContact">
+                    <tr style ="font-size: 15px;">
+                        <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: rgb(204, 0, 51);">{!objContact.FirstName}</td>
+                        <td style="border-width: 3px;border-style: none none groove; text-align: left; border-color: darkblue;">{!objContact.LastName}</td>
+                        <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: darkgreen;">{!objContact.AccountId}</td>
+                        <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: purple;">{!objContact.Email}</td>
+                        <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: orange;">{!objContact.ADR_Departamento_tipo__c}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

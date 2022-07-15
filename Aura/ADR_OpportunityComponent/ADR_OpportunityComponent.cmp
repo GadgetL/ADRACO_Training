@@ -1,0 +1,120 @@
+<!--************************************************************************************************************
+ * Name: ADR_OpportunityComponet
+ * Class test: None
+ * Autor: Francisco Reyes
+ * Description: Aura Component that display a List of Opportunity with fields five and an Opportunity specific.
+ * ***********************************************************************************************************
+ LastModifiedBy      | LastModifiedDate      | Modification Id   | Change description
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ Francisco Reyes		| 23-06-2022			| v0.1				| Example for display a standard object whit style
+*/-->
+<aura:component controller="ADR_DisplayOpportunity" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<aura:attribute name="lstOpportunity" type="List"/><aura:attribute name="lstOpportunity2" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <thead style=" height: 30px">
+        <lightning:icon iconName="standard:opportunity" alternativeText="opportunity" title="opportunity" size="large"/>
+        <tt style=" font-size: 30px; margin:50px 0px 0px 20px ">OPPORTUNITY LIST</tt>
+    </thead>
+    <div>
+        <table class="slds-table slds-table--bordered slds-table--striped">
+            <thead class="slds-text-heading_medium" style="height: 60px; width:40px font-size: 20px;">
+                <tr>
+                    <th scope="col" style="color: darkred; border-width: 5px;border-style:inset; text-align: center; border-color: rgb(204, 0, 51);background-color: rgb(51, 255, 255);" >
+                        <lightning:icon iconName="utility:user" alternativeText="User"  title="User" style="color:darkred;"/>
+                        <span class="slds-truncate" style="padding:10px">Name</span>
+                    </th>
+                    <th scope="col" style="color: darkblue; border-width: 5px;border-style: inset ; text-align: left; border-color: darkblue; background-color: rgb(0, 204, 255);">
+                        <lightning:icon iconName="utility:description" alternativeText="Description"  title="Descript" style="color:darkred;"/>
+                        <span class="slds-truncate">Description</span>
+                    </th>
+                    <th scope="col" style="color: darkgreen; border-width: 5px;border-style: inset; text-align: center; border-color: darkgreen;background-color:rgb(227, 252, 191);">
+                        <lightning:icon iconName="standard:stage_collection" alternativeText="Stage" title="Stage variant"/>
+                        <span class="slds-truncate" style="padding:10px">Stage </span>
+                    </th>
+                    <th scope="col" style="color: purple; border-width: 5px;border-style: inset; text-align: center; border-color: purple;background-color: rgb(102, 204, 102);">
+                        <lightning:icon iconName="standard:shift_type" alternativeText="Type"  title="Type variant"/>
+                        <span class="slds-truncate" style="padding:10px">Type</span>
+                    </th>
+                    <th scope="col" style="color: rgb(17, 43, 60); border-width: 5px;border-style: inset; text-align: center; border-color: rgb(32, 83, 117);background-color: rgb(246, 107, 14);">
+                        <lightning:icon iconName="standard:account" alternativeText="Account"  title="Account variant"/>
+                        <span class="slds-truncate" style="padding:10px">Account Name</span>
+                    </th> 
+                    <th scope="col" style="color: rgb(46, 2, 73); border-width: 5px;border-style: inset; text-align: center; border-color: rgb(46, 2, 73);background-color: rgb(248, 6, 204);">
+                        <lightning:icon iconName="standard:address" alternativeText="Site"  title="Site variant"/>
+                        <span class="slds-truncate" style="padding:10px">Account Site</span>
+                    </th>
+                    <th scope="col" style="color: orange; border-width: 5px;border-style: inset; text-align: center; border-color: orange;background-color: rgb(51, 51, 255);">
+                        <lightning:icon iconName="standard:call" alternativeText="Phone"  title="Phone variant"/>
+                        <span class="slds-truncate" style="padding:10px">Account Phone</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.lstOpportunity}" var="objOpportunity">
+                    <tr style ="font-size: 15px;">
+                        <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: rgb(204, 0, 51);">{!objOpportunity.Name}</td>
+                        <td style="border-width: 3px;border-style: none none groove; text-align: left; border-color: darkblue;">{!objOpportunity.Description}</td>
+                        <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: darkgreen;">{!objOpportunity.StageName}</td>
+                        <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: purple;">{!objOpportunity.Type}</td>
+                        <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: rgb(246, 107, 14);">{!objOpportunity.Account.Name}</td>
+                        <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: rgb(248, 6, 204);">{!objOpportunity.Account.Site}</td>
+                        <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: orange;">{!objOpportunity.Account.Phone}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+        <thead style=" height: 30px">
+        <lightning:icon iconName="standard:opportunity" alternativeText="opportunity" title="opportunity" size="large"/>
+        <tt style=" font-size: 30px; margin:50px 0px 0px 20px ">OPPORTUNITY LIST Name</tt>
+    	</thead>
+        <div>
+            <table class="slds-table slds-table--bordered slds-table--striped">
+                <thead class="slds-text-heading_medium" style="height: 60px; width:40px font-size: 20px;">
+                    <tr>
+                        <th scope="col" style="color: darkred; border-width: 5px;border-style: inset; text-align: center; border-color: rgb(204, 0, 51);background-color: rgb(51, 255, 255);" >
+                            <lightning:icon iconName="utility:user" alternativeText="User"  title="User" style="color:darkred;"/>
+                            <span class="slds-truncate" style="padding:10px">Name</span>
+                        </th>
+                        <th scope="col" style="color: darkblue; border-width: 5px;border-style: inset ; text-align: left; border-color: darkblue; background-color: rgb(0, 204, 255);">
+                            <lightning:icon iconName="utility:description" alternativeText="Description"  title="Descript" style="color:darkred;"/>
+                            <span class="slds-truncate">Description</span>
+                        </th>
+                        <th scope="col" style="color: darkgreen; border-width: 5px;border-style: inset; text-align: center; border-color: darkgreen;background-color:rgb(227, 252, 191);">
+                            <lightning:icon iconName="standard:stage_collection" alternativeText="Stage" title="Stage variant"/>
+                            <span class="slds-truncate" style="padding:10px">Stage </span>
+                        </th>
+                        <th scope="col" style="color: purple; border-width: 5px;border-style: inset; text-align: center; border-color: purple;background-color: rgb(102, 204, 102);">
+                            <lightning:icon iconName="standard:shift_type" alternativeText="Type"  title="Type variant"/>
+                            <span class="slds-truncate" style="padding:10px">Type</span>
+                        </th>
+                        <th scope="col" style="color: rgb(17, 43, 60); border-width: 5px;border-style: inset; text-align: center; border-color: rgb(32, 83, 117);background-color: rgb(246, 107, 14);">
+                            <lightning:icon iconName="standard:account" alternativeText="Account"  title="Account variant"/>
+                            <span class="slds-truncate" style="padding:10px">Account Name</span>
+                        </th>  
+                        <th scope="col" style="color: rgb(46, 2, 73); border-width: 5px;border-style: inset; text-align: center; border-color: rgb(46, 2, 73);background-color: rgb(248, 6, 204);">
+                            <lightning:icon iconName="standard:address" alternativeText="Site"  title="Site variant"/>
+                            <span class="slds-truncate" style="padding:10px">Account Site</span>
+                        </th>
+                        <th scope="col" style="color: orange; border-width: 5px;border-style: inset; text-align: center; border-color: orange;background-color: rgb(51, 51, 255);">
+                            <lightning:icon iconName="standard:call" alternativeText="Phone"  title="Phone variant"/>
+                            <span class="slds-truncate" style="padding:10px">Account Phone</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.lstOpportunity2}" var="objOpportunity">
+                        <tr style ="font-size: 15px;">
+                            <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: rgb(204, 0, 51);">{!objOpportunity.Name}</td>
+                            <td style="border-width: 3px;border-style: none none groove; text-align: left; border-color: darkblue;">{!objOpportunity.Description}</td>
+                            <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: darkgreen;">{!objOpportunity.StageName}</td>
+                            <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: purple;">{!objOpportunity.Type}</td>
+                            <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: rgb(246, 107, 14);">{!objOpportunity.Account.Name}</td>
+                            <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: rgb(248, 6, 204);">{!objOpportunity.Account.Site}</td>
+                            <td style="border-width: 3px;border-style: none none groove; text-align: center; border-color: orange;">{!objOpportunity.Account.Phone}</td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</aura:component>
