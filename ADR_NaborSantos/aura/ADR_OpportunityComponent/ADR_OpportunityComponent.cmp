@@ -1,0 +1,71 @@
+<aura:component controller="ADR_DisplayListOfOpportunity" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="lstOpportunities" type="List"/>
+    <aura:attribute name="lstNameOpportunities" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="container">
+        <div class="title-table">
+            <span>OPPORTUNITY LIST</span>
+        </div>
+        <div class="table-container">
+            <table aria-multiselectable="true" class="slds-box slds-table slds-table-c slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" role="grid" aria-label="Table of Opp">
+                <thead class="bg-thead slds-line-height_reset">
+                    <tr>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Name Opportunity</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Description Opportunity</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Stage Opportunity</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Type Opportunity</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Account Name</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Account Site</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Account Phone</span></th>
+                    </tr>
+                </thead>    
+                <tbody>
+                    <aura:iteration items="{!v.lstOpportunities}" var="objOpp">
+                        <tr>
+                            <td>{!objOpp.Name}</td>
+                            <td>{!objOpp.Description}</td>
+                            <td>{!objOpp.StageName}</td>
+                            <td>{!objOpp.Type}</td>
+                            <td>{!objOpp.Account.Name}</td>
+                            <td>{!objOpp.Account.Site}</td>
+                            <td>{!objOpp.Account.Phone}</td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>       
+        </div>         
+    </div>
+    <div class="container">
+        <div class="title-table">
+            <span>OPPORTUNITY LIST OF NAME</span>
+        </div>
+        <div class="table-container">
+            <table aria-multiselectable="true" class="slds-box slds-table slds-table-c slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" role="grid" aria-label="Table of Opp">
+                <thead class="bg-thead slds-line-height_reset">
+                    <tr>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Name Opportunity</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Description Opportunity</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Stage Opportunity</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Type Opportunity</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Account Name</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Account Site</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Account Phone</span></th>
+                    </tr>
+                </thead>    
+                <tbody>
+                    <aura:iteration items="{!v.lstNameOpportunities}" var="objOpp">
+                        <tr>
+                            <td>{!objOpp.Name}</td>
+                            <td>{!objOpp.Description}</td>
+                            <td>{!objOpp.StageName}</td>
+                            <td>{!objOpp.Type}</td>
+                            <td>{!objOpp.Account.Name}</td>
+                            <td>{!objOpp.Account.Site}</td>
+                            <td>{!objOpp.Account.Phone}</td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>       
+        </div>         
+    </div>
+</aura:component>

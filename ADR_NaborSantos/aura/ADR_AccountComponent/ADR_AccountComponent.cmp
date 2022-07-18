@@ -1,0 +1,31 @@
+<aura:component controller="ADR_DisplayListOfAccount" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >	
+    <!-- Declaración de variables {!v.varName}-->
+    <aura:attribute name="lstAccounts" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="container">
+        <div class="table-container">
+                <table class="slds-box slds-table slds-table-c slds-table_bordered slds-table_col-bordered">
+                <thead class="bg-thead slds-line-height_reset">
+                    <tr class="slds-line-height_reset">
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Name</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Rating</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Phone</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Website</span></th>
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">Description</span></th>
+                    </tr>
+                </thead>    
+                <tbody>
+                    <aura:iteration items="{!v.lstAccounts}" var="objAccount">
+                        <tr>
+                            <td>{!objAccount.Name}</td>
+                            <td>{!objAccount.Rating}</td>
+                            <td>{!objAccount.Phone}</td>
+                            <td>{!objAccount.Website}</td>
+                            <td>{!objAccount.Description}</td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>        
+        </div>
+    </div>
+</aura:component>

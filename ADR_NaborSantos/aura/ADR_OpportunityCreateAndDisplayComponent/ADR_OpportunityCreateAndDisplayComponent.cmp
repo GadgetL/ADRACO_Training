@@ -1,0 +1,78 @@
+<aura:component controller="ADR_DisplayAndCreateOpportunity" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="objOpportunity" type="Opportunity" default="{'sobjectType' : 'Opportunity', 
+                                                              'Name' : '',
+                                                              'Description' : '',                                                                
+                                                              'Amount' : '',
+                                                              'StageName' : '',
+                                                              'CloseDate' : '',
+                                                              'Type' : ''}"/>    
+    <aura:attribute name="lstOpportunities" type="Opportunity[]"/>  
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="container-card-acc">
+        <lightning:card title="Create a New Opportunity" class="card-opportunity">
+            <div class="card-opp-container">
+                <lightning:input name="Name" label="Opportunity Name" value="{!v.objOpportunity.Name}"/>      
+                <lightning:input name="Description" label="Opportunity Description" value="{!v.objOpportunity.Description}"/>      
+                <lightning:input type="number" name="Amount" label="Opportunity Amount" value="{!v.objOpportunity.Amount}"/>             
+                <label>Opportunity Stage Name</label>
+                <force:inputField value="{!v.objOpportunity.StageName}"/>
+                <lightning:input type="date" name="CloseDate" label="Opportunity CloseDate" value="{!v.objOpportunity.CloseDate}"/> 
+                <label>Opportunity Type</label>
+                <force:inputField value="{!v.objOpportunity.Type}"/>            
+                <lightning:button variant="Success" 
+                           label="Create Opportunity" 
+                           onclick="{!c.createOpportunityComp}" 
+                           class="slds-m-left_x-small btn-opportunity">
+                </lightning:button>
+            </div>
+	    </lightning:card>
+    </div>        
+	<div class="container">
+        <div class="table-container">
+            <lightning:card title ="Opportunities"> 
+                    <table class="slds-box slds-table slds-table-contact slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"> 
+                        <thead class="bg-thead-contact slds-line-height_reset"> 
+                            <tr class="slds-line-height_reset"> 
+                                <th scope="col" class="slds-text-align_center txt-color">
+                                    <lightning:icon iconName="standard:identifier" alternativeText="Id" size="x-small"/>
+                                    <span class="slds-truncate"> Id</span>
+                                </th> 
+                                <th scope="col" class="slds-text-align_center txt-color">
+                                    <lightning:icon iconName="standard:person_name" alternativeText="Name" size="x-small"/>
+                                    <span class="slds-truncate"> Name</span>
+                                </th> 
+                                <th scope="col" class="slds-text-align_center txt-color">
+                                    <lightning:icon iconName="utility:description" alternativeText="Descrip" size="x-small" variant="Success"/>
+                                    <span class="slds-truncate"> Description</span>
+                                </th> 
+                                <th scope="col" class="slds-text-align_center txt-color">
+                                    <lightning:icon iconName="custom:custom41" alternativeText="Amount" size="x-small"/>
+                                    <span class="slds-truncate"> Amount</span>
+                                </th> 
+                                <th scope="col" class="slds-text-align_center txt-color">
+                                    <lightning:icon iconName="standard:picklist_type" alternativeText="Type" size="x-small"/>
+                                    <span class="slds-truncate"> Type</span>
+                                </th> 
+                                <th scope="col" class="slds-text-align_center txt-color">
+                                    <lightning:icon iconName="standard:stage" alternativeText="Stage" size="x-small"/>
+                                    <span class="slds-truncate"> StageName</span>
+                                </th> 
+                            </tr> 
+                        </thead> 
+                        <tbody> 
+                            <aura:iteration items="{!v.lstOpportunities}" var="objOpportunity"> 
+                                <tr> 
+                                    <td>{!objOpportunity.Id}</td> 
+                                    <td>{!objOpportunity.Name}</td> 
+                                    <td>{!objOpportunity.Description}</td> 
+                                    <td>{!objOpportunity.Amount}</td> 
+                                    <td>{!objOpportunity.Type}</td> 
+									<td>{!objOpportunity.StageName}</td>                                     
+                                </tr> 
+                            </aura:iteration> 
+                        </tbody> 
+                    </table> 
+            </lightning:card>
+        </div>
+    </div>
+</aura:component>

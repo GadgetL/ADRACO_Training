@@ -1,0 +1,33 @@
+<aura:component controller="ADR_DisplayListOfContact" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="lstContacts" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="container">
+        <div class="title-table">
+            <span>CONTACT LIST</span>
+        </div>
+        <div class="table-container">
+            <table aria-multiselectable="true" class="slds-box slds-table slds-table-c slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" role="grid" aria-label="Table of Contacts">
+                <thead class="bg-thead slds-line-height_reset">
+                    <tr class="slds-line-height_reset">
+                        <th scope="col" class="slds-text-align_center txt-color"><span class="slds-truncate">ID</span></th>
+                        <th scope="col" class="slds-text-align_center"><span class="slds-truncate">Name</span></th>
+                        <th scope="col" class="slds-text-align_center"><span class="slds-truncate">Phone</span></th>
+                        <th scope="col" class="slds-text-align_center"><span class="slds-truncate">Email</span></th>
+                        <th scope="col" class="slds-text-align_center"><span class="slds-truncate">Birthdate</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.lstContacts}" var="objContact">
+                        <tr>
+                            <td>{!objContact.Id}</td>
+                            <td>{!objContact.LastName}</td>
+                            <td>{!objContact.Phone}</td>
+                            <td>{!objContact.Email}</td>
+                            <td>{!objContact.Birthdate}</td>                        
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table> 
+        </div>                     
+    </div>
+</aura:component>

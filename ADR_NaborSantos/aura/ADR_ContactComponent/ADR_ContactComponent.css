@@ -1,0 +1,70 @@
+.THIS {
+    width: 100%;
+    height: 100%;
+}
+
+.THIS.col-size{
+    width:3.25rem;
+}
+
+.THIS.container{
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    height: 500px;
+}
+
+.THIS.container .table-container{
+    display: grid;	
+    height: 45vh;
+    align-content: center;
+    justify-content: center;
+}
+
+.THIS.container .title-table{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 100%;    
+}
+
+.THIS.container .title-table span{
+    color: #3594e8 !important;    
+    font-family: Arial;
+    font-size: 30px !important;
+    font-weight: bold;
+}
+
+
+.THIS.container .table-container table{
+    width: 80% !important;
+}
+
+.THIS.slds-table thead th{
+    background-color: #56ad8b;
+    color: white;
+    padding: var(--lwc-tableCellSpacing,0.5rem);
+    font-weight: var(--lwc-fontWeightBold,700);
+    line-height: normal;
+}
+
+.THIS.container .table-container table .bg-thead{
+    background-color: #56ad8b !important;     
+	color: white !important;
+}
+            
+.THIS.container .table-container table .bg-thead tr txt-color{
+	background-color: #56ad8b;     
+	color: white;	                
+}
+            
+.THIS.container .table-container .slds-table-c{
+  	background-color: aliceblue;
+    width: 1024px !important;
+	font-size: inherit;    
+}
+                    
+.THIS.container .table-container .slds-table-c body{
+	background-color: #518fc6 !important;                
+}

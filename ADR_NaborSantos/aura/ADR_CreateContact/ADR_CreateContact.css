@@ -1,0 +1,36 @@
+.THIS {
+    display: flex;
+}
+
+.THIS.container-card-acc{
+    align-content: center;
+    width: 100%;
+    justify-content: center; 
+    background: #9aadbf;
+}
+
+.THIS.container{
+    background: #9aadbf;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.THIS.container.table-container{
+    background: white;
+    width: 100%;
+    height: auto;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+}
+
+.THIS.slds-gri{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}

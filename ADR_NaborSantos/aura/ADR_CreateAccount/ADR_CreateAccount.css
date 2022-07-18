@@ -1,0 +1,13 @@
+.THIS {
+}
+.THIS.container-card-acc{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.THIS.container-card-acc.slds-card{
+    width: 70%;
+	height: 100%;
+}
