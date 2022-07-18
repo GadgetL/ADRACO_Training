@@ -1,0 +1,36 @@
+<aura:component controller="ADR_DisplayListofOpportunity" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<aura:attribute name="lstOpportunity" type="List"/>
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div>
+    	<table class="slds-table slds-table--bordered slds-table--striped">
+         <thead>
+        	<tr>
+            	<th scope="col" > <span class="slds-truncate" > Name</span></th>
+                <th scope="col" > <span class="slds-truncate"> Description</span></th>
+                <th scope="col" > <span class="slds-truncate"> Stage</span></th>
+                <th scope="col" > <span class="slds-truncate"> Type</span></th>
+                <th scope="col" > <span class="slds-truncate"> Account Name</span></th>
+                <th scope="col" > <span class="slds-truncate"> Account Site</span></th>
+                <th scope="col" > <span class="slds-truncate"> Account Phone</span></th>
+            </tr>        
+         </thead>
+         <tbody>
+            <aura:iteration items="{!v.lstOpportunity}" var="objOpportunity">
+             <tr>
+             	<td>{!objOpportunity.Name}</td>
+                <td>{!objOpportunity.Description}</td>  
+                <td>{!objOpportunity.StageName}</td>
+                <td>{!objOpportunity.Type}</td> 
+                <td>{!objOpportunity.Account.Name}</td>
+                <td>{!objOpportunity.Account.Site}</td> 
+                <td>{!objOpportunity.Account.Phone}</td> 
+
+             </tr>
+            </aura:iteration>
+         </tbody>
+       </table>
+    </div>
+</aura:component>
