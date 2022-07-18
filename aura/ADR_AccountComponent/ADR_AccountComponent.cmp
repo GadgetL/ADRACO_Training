@@ -1,0 +1,43 @@
+<aura:component controller="ADR_DisplayListOfAccount" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <!-- Declaración de variables y para acceder a las variables "{!v.NombreVariable}" -->
+    <aura:attribute name="lstAccounts" type="List"/>
+    <aura:attribute name="bandera" type="Boolean" default="True"/>
+    
+    <!-- Llama al método del controlador "{!c.NombreMétodo}" -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <p>Hola Salesforce</p>
+    <div>
+        <table class="slds-table slds-table--bordered slds-table--striped ">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <span class="slds-truncate">Name</span>
+                    </th>
+                    <th scope="col">
+                        <span class="slds-truncate">Rating</span>
+                    </th>
+                    <th scope="col">
+                        <span class="slds-truncate">Phone</span>
+                    </th>
+                    <th scope="col">
+                        <span class="slds-truncate">Website</span>
+                    </th>
+                    <th scope="col">
+                        <span class="slds-truncate">Description</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.lstAccounts}" var="objAccount">
+                    <tr>
+                        <td>{!objAccount.Name}</td>
+                        <td>{!objAccount.Rating}</td>
+                        <td>{!objAccount.Phone}</td>
+                        <td>{!objAccount.Website}</td>
+                        <td>{!objAccount.Description}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

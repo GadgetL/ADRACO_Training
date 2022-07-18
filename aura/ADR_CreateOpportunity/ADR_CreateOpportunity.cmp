@@ -1,0 +1,86 @@
+<aura:component controller="ADR_OpportunityInsertAndDisplay" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<!--Variable -->
+    <aura:attribute name="objOpp" type="Opportunity" default="{'sobjectType' : 'Opportunity',
+                                                              'Name' : '',
+                                                              'StageName' : '',
+                                                              'Amount' : '',
+                                                              'CloseDate' : '',
+                                                              'Type' : ''}" />
+    <aura:attribute name="lstOpps" Type="Opportunity[]" />
+    <aura:attribute name="flagButton" Type="Boolean" default="true"/>
+    <!-- Handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Diseño -->
+    <lightning:card>
+        <div class="divInput">
+            <div>
+                <lightning:icon iconName="action:new_opportunity" title="NewOpportunity" size="medium" />
+                <h1>create a new Opportunity</h1>
+            </div>
+            <div > 
+                <lightning:icon iconName="utility:priority" title="OpportunityName" size="medium" />
+                <lightning:input name="oppName" required="true" label="Opportunity Name" value="{!v.objOpp.Name}" />
+            </div>
+            <p >Stage Name</p>
+            <div >
+                <lightning:icon iconName="utility:stage" title="OpportunityStageName" size="medium" />
+                <force:inputField value="{!v.objOpp.StageName}" />
+            </div>
+            <div >
+                <lightning:icon iconName="utility:currency" title="OpportunityAmount" size="medium" />
+                <lightning:input type="Number" name="oppAmount" label="Opportunity Amount" value="{!v.objOpp.Amount}" />
+            </div>
+            <div >
+                <lightning:icon iconName="utility:date_time" title="OpportunityCloseDate" size="medium" />
+                <lightning:input type="Date" name="oppCloseDate" label="Opportunity CloseDate" value="{!v.objOpp.CloseDate}" />
+            </div>
+            <div >
+                <lightning:icon iconName="utility:type" title="OpportunityType" size="medium" />
+                <force:inputField value="{!v.objOpp.Type}" />
+            </div>
+            <div >
+               	<lightning:button variant="brand" label="Create Opportunity" onclick="{!c.saveOpportunity}" />
+            </div>
+        </div>
+    </lightning:card>
+    
+    
+    <lightning:card>
+        <div style="display: flex; align-items: flex-end; justify-content: center">
+            <lightning:icon iconName="standard:opportunity" title="Opportunity" size="large" />
+            <p style="font-size: 40px;">Opportunity</p>
+        </div>
+        <table class="slds-table slds-table--bordered slds-table--striped ">
+            <thead>
+                <tr>
+                    <th scope="col" style="background: red;">
+                        <span class="slds-truncate" style="color: #fdfefe;">Name</span>
+                    </th>
+                    <th scope="col" style="background: red;">
+                        <span class="slds-truncate" style="color: #fdfefe;">Stage Name</span>
+                    </th>
+                    <th scope="col" style="background: red;">
+                        <span class="slds-truncate" style="color: #fdfefe;">Amount</span>
+                    </th>
+                    <th scope="col" style="background: red;">
+                        <span class="slds-truncate" style="color: #fdfefe;">Close Date</span>
+                    </th>
+                    <th scope="col" style="background: red;">
+                        <span class="slds-truncate" style="color: #fdfefe;">Type</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.lstOpps}" var="objOpp">
+                    <tr>
+                        <td>{!objOpp.Name}</td>
+                        <td>{!objOpp.StageName}</td>
+                        <td>{!objOpp.Amount}</td>
+                        <td>{!objOpp.CloseDate}</td>
+                        <td>{!objOpp.Type}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </lightning:card>
+</aura:component>

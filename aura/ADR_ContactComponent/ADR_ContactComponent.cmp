@@ -1,0 +1,72 @@
+<aura:component controller="ADR_DisplayListOfContact" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <!-- Declaración de variables y para acceder a las variables "{!v.NombreVariable}" -->
+    <aura:attribute name="lstContacts" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!--Aquí va el diseño -->
+    <div>
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-trunca">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-contact" title="contact">    
+                            <lightning:icon iconName="standard:contact" title="Contatc" size="large" />
+                            <span class="slds-assistive-text">Contact</span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                            <div class="slds-card__header-link slds-truncate" title="Contacts">
+                                <span>Contacts</span>
+                            </div>
+                        </h2>
+                    </div>
+                </header>
+            </div>
+            <div class="slds-card__body">
+                <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid" aria-label="Contact Card">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th scope="col">
+                                <lightning:icon iconName="utility:user" alternativeText="User" title="User"/>
+                                <div class="slds-truncate" title="Name">Name</div>
+                            </th>
+                            <th scope="col">
+                                <lightning:icon iconName="utility:phone_portrait" alternativeText="Phone" title="Phone" />
+                                <div class="slds-truncate" title="Phone">Phone</div>
+                            </th>
+                            <th scope="col">
+                                <lightning:icon iconName="utility:email" alternativeText="Email" title="Email" />
+                                <div class="slds-truncate" title="Email">Email</div>
+                            </th>
+                            <th scope="col">
+                                <lightning:icon iconName="utility:profile" alternativeText="Title" title="Title" />
+                                <div class="slds-truncate" title="Title">Title</div>
+                            </th>
+                            <th scope="col">
+                                <lightning:icon iconName="utility:identity" alternativeText="Department" title="Department" />
+                                <div class="slds-truncate" title="Department">Department</div>
+                            </th>
+                            <th scope="col">
+                                <lightning:icon iconName="utility:watchlist" alternativeText="LeadSource" title="LeadSource" />
+                                <div class="slds-truncate" title="LeadSource">Lead Source</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.lstContacts}" var="objContact">
+                            <tr class="slds-hint-parent">
+                                <th scope="row">{!objContact.Name}</th>
+                                <th scope="row">{!objContact.Phone}</th>
+                                <th scope="row">{!objContact.Email}</th>
+                                <th scope="row">{!objContact.Title}</th>
+                                <th scope="row">{!objContact.Department}</th>
+                                <th scope="row">{!objContact.LeadSource}</th>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+    </div>
+	
+</aura:component>

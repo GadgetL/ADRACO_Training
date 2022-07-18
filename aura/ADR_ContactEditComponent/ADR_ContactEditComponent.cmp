@@ -1,0 +1,24 @@
+<aura:component Controller="ADR_ContactEdit" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<!--Variable -->
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="draftValues" type="Object" default="[]"/>
+    <!--Handler -->
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!--Diseño -->
+    <div class="slds-p-around_medium">
+        <h2>Edit Contact Records</h2>
+    </div>
+    <div style="height: 260px;">
+        <lightning:datatable
+                             aura:id="dtTable"
+                             columns="{!v.columns}"
+                             data="{!v.data}"
+                             keyField="Id"
+                             draftValues="{!v.draftValues}"
+                             onsave="{!c.handlersave}"
+                             />
+    </div>
+</aura:component>

@@ -1,0 +1,84 @@
+<aura:component controller="ADR_CreateAndDisplayContactInformation" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<!-- Variables -->
+    <aura:attribute name="objContact" type="Contact" default="{'sobjectType' : 'Contact',
+                                                              'FirstName' : '',
+                                                              'LastName' : '',
+                                                              'Title' : '',
+                                                              'Phone' : '',
+                                                              'Email' : ''}" />
+    <aura:attribute name="lstContacts" Type="Contact[]" />
+    
+    <!-- Helper -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- Diseño -->
+    <lightning:card>
+        <div class="divInput">
+            <div style="display: flex; align-items: end; justify-content: center;">
+                <lightning:icon iconName="standard:contact" title="NewContact" size="medium" />
+                <h1>create a new Contact</h1>
+            </div>
+            <div style="display: flex; align-items: end; justify-content: center;"> 
+                <lightning:icon iconName="utility:user" title="ContactName" size="medium" />
+                <lightning:input name="contFirstName" label="Contact First Name" value="{!v.objContact.FirstName}" />
+            </div>
+            <div style="display: flex; align-items: end; justify-content: center;"> 
+                <lightning:icon iconName="utility:people" title="ContactName" size="medium" />
+                <lightning:input name="contLastName" required="true" label="Contact Last Name" value="{!v.objContact.LastName}" />
+            </div>
+            <div style="display: flex; align-items: end; justify-content: center;">
+                <lightning:icon iconName="utility:identity" title="ContactTitle" size="medium" />
+                <lightning:input name="contTitle" label="Title" value="{!v.objContact.Title}" />
+            </div>
+            <div style="display: flex; align-items: end; justify-content: center">
+                <lightning:icon iconName="utility:phone_portrait" title="ContactPhone" size="medium" />
+                <lightning:input name="contPhone" label="Contact Phone" value="{!v.objContact.Phone}" />
+            </div>
+            <div style="display: flex; align-items: end; justify-content: center">
+                <lightning:icon iconName="utility:email" title="ContactEmail" size="medium" />
+                <lightning:input name="contEmail" label="Email" value="{!v.objContact.Email}" />
+            </div>
+            <div style="margin-top: 20px; display: flex; align-items: end; justify-content: center">
+               	<lightning:button variant="brand" label="Create Contact" onclick="{!c.saveContact}" />
+            </div>
+        </div>
+    </lightning:card>
+    
+    
+    <lightning:card>
+        <div>
+            <div style="display: flex; align-items: flex-end; justify-content: center">
+                <lightning:icon iconName="standard:contact" title="Contact" size="large" />
+                <p style="font-size: 40px;">Contact</p>
+            </div>
+            <table class="slds-table slds-table--bordered slds-table--striped ">
+                <thead>
+                    <tr>
+                        <th scope="col" style="background: red;">
+                            <span class="slds-truncate" style="color: #fdfefe;">Name</span>
+                        </th>
+                        <th scope="col" style="background: red;">
+                            <span class="slds-truncate" style="color: #fdfefe;">Title</span>
+                        </th>
+                        <th scope="col" style="background: red;">
+                            <span class="slds-truncate" style="color: #fdfefe;">Phone</span>
+                        </th>
+                        <th scope="col" style="background: red;">
+                            <span class="slds-truncate" style="color: #fdfefe;">Email</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.lstContacts}" var="objContact">
+                        <tr>
+                            <td>{!objContact.Name}</td>
+                            <td>{!objContact.Title}</td>
+                            <td>{!objContact.Phone}</td>
+                            <td>{!objContact.Email}</td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </div>
+    </lightning:card>
+</aura:component>

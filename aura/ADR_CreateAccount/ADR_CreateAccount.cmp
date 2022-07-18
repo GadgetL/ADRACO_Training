@@ -1,0 +1,76 @@
+<aura:component controller="ADR_AccountInsetAndDisplay" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<!-- Variable de tipo Object con atributos requeridos -->
+    <aura:attribute name="objAccount" type="Account" default="{'sobjectType' : 'Account',
+                                                              'Name' : '',
+                                                              'AccountNumber' : '',
+                                                              'Phone' : '',
+                                                              'Website' : ''}" />
+    <!-- Variables -->
+    <aura:attribute name="lstAccounts" Type="Account[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <lightning:card>
+        <div class="divInput">
+            <div style="display: flex; align-items: end; justify-content: center;">
+                <lightning:icon iconName="action:new_account" title="NewAccount" size="medium" />
+                <h1>create a new Account</h1>
+            </div>
+            <div style="display: flex; align-items: end; justify-content: center;"> 
+                <lightning:icon iconName="utility:company" title="AccountName" size="medium" />
+                <lightning:input name="accName" required="true" label="Account Name" value="{!v.objAccount.Name}" />
+            </div>   
+            <div style="display: flex; align-items: end; justify-content: center;">
+                <lightning:icon iconName="utility:number_input" title="AccountNumber" size="medium" />
+                <lightning:input name="accAccountNumber" label="Account Number" value="{!v.objAccount.AccountNumber}" />
+            </div>
+            <div style="display: flex; align-items: end; justify-content: center">
+                <lightning:icon iconName="utility:phone_portrait" title="AccountPhone" size="medium" />
+                <lightning:input name="accPhone" label="Account Phone" value="{!v.objAccount.Phone}" />
+            </div>
+            <div style="display: flex; align-items: end; justify-content: center">
+                <lightning:icon iconName="utility:desktop" title="AccountWebsite" size="medium" />
+                <lightning:input name="accWebsite" label="Account Website" value="{!v.objAccount.Website}" />
+            </div>
+            <div style="margin-top: 20px; display: flex; align-items: end; justify-content: center">
+               	<lightning:button variant="brand" label="Create Account" onclick="{!c.saveAccount}" />
+            </div>
+        </div>
+    </lightning:card>
+    
+    
+    <lightning:card>
+        <div style="display: flex; align-items: flex-end; justify-content: center">
+            <lightning:icon iconName="standard:account" title="Account" size="large" />
+            <p style="font-size: 40px;">Account</p>
+        </div>
+        <table class="slds-table slds-table--bordered slds-table--striped ">
+            <thead>
+                <tr>
+                    <th scope="col" style="background: red;">
+                        <span class="slds-truncate" style="color: #fdfefe;">Name</span>
+                    </th>
+                    <th scope="col" style="background: red;">
+                        <span class="slds-truncate" style="color: #fdfefe;">Account Number</span>
+                    </th>
+                    <th scope="col" style="background: red;">
+                        <span class="slds-truncate" style="color: #fdfefe;">Phone</span>
+                    </th>
+                    <th scope="col" style="background: red;">
+                        <span class="slds-truncate" style="color: #fdfefe;">Website</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.lstAccounts}" var="objAccount">
+                    <tr>
+                        <td>{!objAccount.Name}</td>
+                        <td>{!objAccount.AccountNumber}</td>
+                        <td>{!objAccount.Phone}</td>
+                        <td>{!objAccount.Website}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </lightning:card>
+    
+</aura:component>
